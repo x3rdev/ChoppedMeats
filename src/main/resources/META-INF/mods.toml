@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="Gnu GPL v3"
+[[mods]]
+modId="chopped_meats"
+version="${file.jarVersion}"
+displayName="Chopped Meats"
+logoFile="chopped_meats.png" #optional
+authors="x3r"
+description='''
+Adds a new way to use meat from animals.
+'''
+[[dependencies.chopped_meats]]
+modId="forge"
+mandatory=true
+versionRange="[47.2.18,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.chopped_meats]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,)"
+ordering="NONE"
+side="BOTH"

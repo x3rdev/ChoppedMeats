@@ -1,0 +1,12 @@
+{
+  "item.chopped_meats.iron_chefs_knife": "Iron Chef's Knife",
+  "item.chopped_meats.diamond_chefs_knife": "Diamond Chef's Knife",
+  "item.chopped_meats.chopped_beef": "Chopped Beef",
+  "item.chopped_meats.chopped_porkchop": "Chopped Porkchop",
+  "item.chopped_meats.chopped_chicken": "Chopped Chicken",
+  "item.chopped_meats.chopped_mutton": "Chopped Mutton",
+  "item.chopped_meats.chopped_rabbit": "Chopped Rabbit",
+  "item.chopped_meats.filleted_cod": "Filleted Cod",
+  "item.chopped_meats.filleted_salmon": "Filleted Salmon",
+  "itemGroup.chopped_meats": "Chopped Meats"
+}

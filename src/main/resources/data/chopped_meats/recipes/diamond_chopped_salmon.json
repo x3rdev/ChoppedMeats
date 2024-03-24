@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "chopped_meats:diamond_chefs_knife"
+    },
+    {
+      "item": "minecraft:rabbit"
+    }
+  ],
+  "result": {
+    "item": "chopped_meats:filleted_salmon",
+    "count": 6
+  }
+}

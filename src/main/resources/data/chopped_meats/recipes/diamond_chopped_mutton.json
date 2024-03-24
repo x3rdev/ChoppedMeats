@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "chopped_meats:diamond_chefs_knife"
+    },
+    {
+      "item": "minecraft:mutton"
+    }
+  ],
+  "result": {
+    "item": "chopped_meats:chopped_mutton",
+    "count": 6
+  }
+}
