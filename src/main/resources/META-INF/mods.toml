@@ -13,7 +13,7 @@ Adds a new way to use meat from animals.
 [[dependencies.chopped_meats]]
 modId="forge"
 mandatory=true
-versionRange="[47.2.18,)"
+versionRange="[47.2.0,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.chopped_meats]]

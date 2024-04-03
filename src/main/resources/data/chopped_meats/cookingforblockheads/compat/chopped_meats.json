@@ -1,0 +1,23 @@
+{
+  "modid": "chopped_meats",
+  "foods":{
+    "GENERAL": [
+      "chopped_meats:chopped_beef",
+      "chopped_meats:chopped_chicken",
+      "chopped_meats:chopped_porkchop",
+      "chopped_meats:chopped_rabbit",
+      "chopped_meats:chopped_mutton",
+      "chopped_meats:chopped_fish",
+      "chopped_meats:chopped_salmon"
+    ],
+    "INGREDIENTS": [
+      "chopped_meats:chopped_beef",
+      "chopped_meats:chopped_chicken",
+      "chopped_meats:chopped_porkchop",
+      "chopped_meats:chopped_rabbit",
+      "chopped_meats:chopped_mutton",
+      "chopped_meats:chopped_fish",
+      "chopped_meats:chopped_salmon"
+    ]
+  }
+}
