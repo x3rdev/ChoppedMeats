@@ -20,9 +20,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DIAMOND_CHEFS_KNIFE = ITEMS.register("diamond_chefs_knife", () -> new ChefsKnife(
             new Item.Properties().durability(224)));
     public static final RegistryObject<Item> CHOPPED_BEEF = ITEMS.register("chopped_beef", () -> new Item(new Item.Properties().food(Foods.BEEF)));
-    public static final RegistryObject<Item> CHOPPED_PORKCHOP = ITEMS.register("chopped_porkchop", () -> new Item(new Item.Properties().food(Foods.PORKCHOP)));
     public static final RegistryObject<Item> CHOPPED_CHICKEN = ITEMS.register("chopped_chicken", () -> new Item(new Item.Properties().food(Foods.CHICKEN)));
     public static final RegistryObject<Item> CHOPPED_MUTTON = ITEMS.register("chopped_mutton", () -> new Item(new Item.Properties().food(Foods.MUTTON)));
+    public static final RegistryObject<Item> CHOPPED_PORKCHOP = ITEMS.register("chopped_porkchop", () -> new Item(new Item.Properties().food(Foods.PORKCHOP)));
     public static final RegistryObject<Item> CHOPPED_RABBIT = ITEMS.register("chopped_rabbit", () -> new Item(new Item.Properties().food(Foods.RABBIT)));
     public static final RegistryObject<Item> FILLETED_COD = ITEMS.register("filleted_cod", () -> new Item(new Item.Properties().food(Foods.COD)));
     public static final RegistryObject<Item> FILLETED_SALMON = ITEMS.register("filleted_salmon", () -> new Item(new Item.Properties().food(Foods.SALMON)));
