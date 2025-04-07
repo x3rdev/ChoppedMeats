@@ -1,109 +1,100 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'java-library'
+    id 'idea'
+    id 'net.neoforged.gradle.userdev' version '7.0.165'
 }
 
-version = '1.4'
-group = 'com.github.x3r.chopped_meats'
-archivesBaseName = 'chopped_meats'
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+version = mod_version
+group = mod_group_id
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+repositories {
+    mavenLocal()
+}
 
-minecraft {
+base {
+    archivesName = mod_id
+}
 
-    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-    runs {
-        client {
-            workingDirectory project.file('run')
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'chopped_meats'
+        modSource project.sourceSets.main
+    }
 
-            mods {
-                chopped_meats {
-                    source sourceSets.main
-                }
-            }
-        }
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-        server {
-            workingDirectory project.file('run')
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+//        programArgument '--nogui'
+    }
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'chopped_meats'
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            mods {
-                chopped_meats {
-                    source sourceSets.main
-                }
-            }
-        }
+    data {
+        getArguments().addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
 
-        gameTestServer {
-            workingDirectory project.file('run')
+    junit {
 
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'chopped_meats'
-
-            mods {
-                chopped_meats {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'chopped_meats', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                chopped_meats {
-                    source sourceSets.main
-                }
-            }
-        }
     }
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven { url = 'https://maven.blamejared.com' }
+    maven { url 'https://modmaven.dev/' }
+    maven { url 'https://www.cursemaven.com' }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.18'
-
-    compileOnly(fg.deobf("mezz.jei:jei-1.20.1-common-api:15.2.0.23"))
-    compileOnly(fg.deobf("mezz.jei:jei-1.20.1-forge-api:15.2.0.23"))
-    runtimeOnly(fg.deobf("mezz.jei:jei-1.20.1-forge:15.2.0.23"))
+    implementation "net.neoforged:neoforge:${neo_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:19.19.0.219"
 }
 
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "chopped_meats",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
     }
 }
 
-jar.finalizedBy('reobfJar')
-
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }
