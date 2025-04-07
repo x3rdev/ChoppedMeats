@@ -1,7 +1,6 @@
 package com.github.x3r.choppedmeats;
 
 import com.github.x3r.choppedmeats.common.registry.ItemRegistry;
-import net.neoforged.bus.EventBus;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
