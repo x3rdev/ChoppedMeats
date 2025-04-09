@@ -18,6 +18,8 @@ public class ItemRegistry {
             new Item.Properties().durability(32)));
     public static final DeferredHolder<Item, Item> DIAMOND_CHEFS_KNIFE = ITEMS.register("diamond_chefs_knife", () -> new ChefsKnife(
             new Item.Properties().durability(224)));
+    public static final DeferredHolder<Item, Item> NETHERITE_CHEFS_KNIFE = ITEMS.register("netherite_chefs_knife", () -> new ChefsKnife(
+            new Item.Properties().durability(967)));
     public static final DeferredHolder<Item, Item> CHOPPED_BEEF = ITEMS.register("chopped_beef", () -> new Item(new Item.Properties().food(Foods.BEEF)));
     public static final DeferredHolder<Item, Item> CHOPPED_CHICKEN = ITEMS.register("chopped_chicken", () -> new Item(new Item.Properties().food(Foods.CHICKEN)));
     public static final DeferredHolder<Item, Item> CHOPPED_MUTTON = ITEMS.register("chopped_mutton", () -> new Item(new Item.Properties().food(Foods.MUTTON)));
