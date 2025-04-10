@@ -10,11 +10,11 @@
       "item": "minecraft:stick"
     },
     "i": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:netherite_ingot"
     }
   },
   "result": {
-    "id": "chopped_meats:iron_chefs_knife",
+    "id": "chopped_meats:netherite_chefs_knife",
     "count": 1
   }
 }
